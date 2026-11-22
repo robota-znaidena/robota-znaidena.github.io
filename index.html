@@ -59,20 +59,8 @@ footer{background:#111827;color:#cbd5e1;padding:28px 0;margin-top:20px}
 footer .logo{color:#93c5fd}
 footer .logo span{color:white}
 footer small{color:#94a3b8}
-.modal-backdrop{position:fixed;inset:0;background:#0f172a99;display:none;align-items:center;justify-content:center;padding:18px;z-index:50}
-.modal-backdrop.open{display:flex}
-.modal{background:white;border-radius:16px;width:min(600px,100%);max-height:90vh;overflow:auto;padding:24px}
-.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
-.close{border:0;background:#f1f5f9;border-radius:8px;width:36px;height:36px;font-size:22px}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
-.field{display:flex;flex-direction:column;gap:6px}
-.field.full{grid-column:1/-1}
-.field label{font-size:14px;font-weight:700}
-.field input,.field select,.field textarea{border:1px solid var(--border);border-radius:8px;padding:11px;background:white;width:100%}
-.field textarea{min-height:100px;resize:vertical}
-.form-note{font-size:13px;color:var(--muted);margin:14px 0}
 @media(max-width:800px){.categories{grid-template-columns:repeat(2,1fr)}.search-panel{grid-template-columns:1fr}.jobs-header{align-items:start;flex-direction:column}.employer{flex-direction:column;align-items:start}}
-@media(max-width:520px){.header{padding:12px 0;align-items:flex-start;flex-direction:column}nav{gap:14px;flex-wrap:wrap}.hero{padding:45px 14px}.categories{grid-template-columns:1fr 1fr}.category{padding:15px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.employer{padding:24px}}
+@media(max-width:520px){.header{padding:12px 0;align-items:flex-start;flex-direction:column}nav{gap:14px;flex-wrap:wrap}.hero{padding:45px 14px}.categories{grid-template-columns:1fr 1fr}.category{padding:15px}.employer{padding:24px}}
 </style>
 </head>
 <body>
@@ -125,40 +113,16 @@ footer small{color:#94a3b8}
 <section class="section container" id="employers">
   <div class="employer">
     <div><h2>Ви роботодавець?</h2><p>Надішліть інформацію про вакансію. Ми перевіримо оголошення перед розміщенням на сайті.</p></div>
-    <button class="btn" id="openModal">Розмістити вакансію</button>
+    <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScxBy_ZIMorVQiE6k7CGpj4yT_j7s7LY4XUB5iFZnq_Gsd5bA/viewform" target="_blank" rel="noopener noreferrer">Розмістити вакансію</a>
   </div>
 </section>
 </main>
 
 <footer><div class="container footer-inner"><a class="logo" href="#top">Робота<span>Знайдена</span></a><small>© 2026 РоботаЗнайдена. Платформа пошуку роботи в Україні.</small></div></footer>
 
-<div class="modal-backdrop" id="modalBackdrop">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-head"><h2 id="modalTitle">Заявка на розміщення вакансії</h2><button class="close" id="closeModal" aria-label="Закрити">×</button></div>
-    <form id="employerForm">
-      <div class="form-grid">
-        <div class="field"><label for="company">Назва компанії *</label><input id="company" required></div>
-        <div class="field"><label for="contactName">Контактна особа *</label><input id="contactName" required></div>
-        <div class="field"><label for="contactEmail">Ваш email *</label><input id="contactEmail" type="email" required></div>
-        <div class="field"><label for="contactPhone">Телефон</label><input id="contactPhone" type="tel"></div>
-        <div class="field"><label for="vacancyTitle">Назва вакансії *</label><input id="vacancyTitle" required></div>
-        <div class="field"><label for="vacancyCity">Місто / формат *</label><input id="vacancyCity" placeholder="Місто або віддалено" required></div>
-        <div class="field"><label for="vacancyCategory">Категорія *</label><select id="vacancyCategory" required><option value="">Оберіть категорію</option><option>IT та технології</option><option>Продажі</option><option>Маркетинг</option><option>Логістика</option><option>Обслуговування</option><option>Віддалена робота</option><option>Інше</option></select></div>
-        <div class="field"><label for="salary">Зарплата</label><input id="salary" placeholder="Наприклад, 20 000 грн"></div>
-        <div class="field full"><label for="description">Опис вакансії та вимоги *</label><textarea id="description" required placeholder="Обов'язки, вимоги, графік, умови..."></textarea></div>
-      </div>
-      <p class="form-note">Після натискання кнопки відкриється ваша пошта з готовим листом. Вакансія не публікується автоматично — її потрібно перевірити.</p>
-      <button class="btn" type="submit">Надіслати заявку</button>
-    </form>
-  </div>
-</div>
 
 <script>
-// Додайте свою адресу електронної пошти для отримання заявок роботодавців:
-const CONTACT_EMAIL = "YOUR_EMAIL@gmail.com";
-
-// Сюди додаються лише реальні, перевірені вакансії.
-// Поки масив порожній — вигаданих оголошень на сайті немає.
+// На сайті поки немає опублікованих вакансій. Додаються лише реальні та перевірені оголошення.
 const vacancies = [];
 
 const searchInput=document.getElementById('searchInput');
@@ -177,7 +141,7 @@ function renderJobs(){
   });
   resultText.textContent=`Знайдено вакансій: ${filtered.length}`;
   if(!filtered.length){
-    jobList.innerHTML=`<div class="empty"><div class="emoji">🔎</div><h3>Поки що вакансій немає</h3><p>${query||city||category?'За вашим запитом оголошень не знайдено. Спробуйте змінити параметри пошуку.':'Ми працюємо над наповненням сайту реальними вакансіями. Роботодавці можуть надіслати заявку на розміщення.'}</p><button class="btn btn-light" onclick="document.getElementById('employers').scrollIntoView({behavior:'smooth'})">Роботодавцям</button></div>`;
+    jobList.innerHTML=`<div class="empty"><div class="emoji">🔎</div><h3>Поки що вакансій немає</h3><p>${query||city||category?'За вашим запитом оголошень не знайдено. Спробуйте змінити параметри пошуку.':'Ми працюємо над наповненням сайту реальними вакансіями. Роботодавці можуть надіслати заявку на розміщення.'}</p><a class="btn btn-light" href="#employers">Роботодавцям</a></div>`;
     return;
   }
   jobList.innerHTML=filtered.map(job=>`<article class="job-card"><h3>${escapeHTML(job.title)}</h3><strong>${escapeHTML(job.company)}</strong><div class="job-meta"><span>📍 ${escapeHTML(job.city)}</span><span>💰 ${escapeHTML(job.salary||'Зарплата не вказана')}</span></div><span class="tag">${escapeHTML(job.category)}</span><p>${escapeHTML(job.description)}</p></article>`).join('');
@@ -191,29 +155,6 @@ document.querySelectorAll('.category').forEach(btn=>btn.addEventListener('click'
   document.querySelectorAll('.category').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');categoryFilter.value=btn.dataset.category;renderJobs();document.getElementById('vacancies').scrollIntoView({behavior:'smooth'});
 }));
-const backdrop=document.getElementById('modalBackdrop');
-document.getElementById('openModal').addEventListener('click',()=>backdrop.classList.add('open'));
-document.getElementById('closeModal').addEventListener('click',()=>backdrop.classList.remove('open'));
-backdrop.addEventListener('click',e=>{if(e.target===backdrop)backdrop.classList.remove('open');});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')backdrop.classList.remove('open');});
-document.getElementById('employerForm').addEventListener('submit',e=>{
-  e.preventDefault();
-  if(CONTACT_EMAIL==="YOUR_EMAIL@gmail.com"){alert("Спочатку в коді сайту замініть YOUR_EMAIL@gmail.com на свою електронну адресу.");return;}
-  const fields={
-    company:document.getElementById('company').value,
-    contactName:document.getElementById('contactName').value,
-    contactEmail:document.getElementById('contactEmail').value,
-    contactPhone:document.getElementById('contactPhone').value,
-    title:document.getElementById('vacancyTitle').value,
-    city:document.getElementById('vacancyCity').value,
-    category:document.getElementById('vacancyCategory').value,
-    salary:document.getElementById('salary').value,
-    description:document.getElementById('description').value
-  };
-  const subject=encodeURIComponent('Заявка на вакансію — '+fields.title);
-  const body=encodeURIComponent(`Компанія: ${fields.company}\nКонтактна особа: ${fields.contactName}\nEmail: ${fields.contactEmail}\nТелефон: ${fields.contactPhone}\nВакансія: ${fields.title}\nМісто/формат: ${fields.city}\nКатегорія: ${fields.category}\nЗарплата: ${fields.salary}\n\nОпис:\n${fields.description}`);
-  window.location.href=`mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-});
 renderJobs();
 </script>
 </body>
