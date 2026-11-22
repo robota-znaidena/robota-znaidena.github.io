@@ -1,564 +1,220 @@
-
 <!DOCTYPE html>
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>РоботаЗнайдена — пошук роботи в Україні</title>
-
+<meta name="description" content="РоботаЗнайдена — платформа для пошуку роботи та розміщення вакансій в Україні.">
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f5f7fb;
-    color: #202938;
-}
-
-header {
-    background: white;
-    border-bottom: 1px solid #e5e9f0;
-    padding: 18px 7%;
-}
-
-.header-container {
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.logo {
-    font-size: 26px;
-    font-weight: bold;
-    color: #2563eb;
-    text-decoration: none;
-}
-
-.logo span {
-    color: #202938;
-}
-
-nav {
-    display: flex;
-    gap: 25px;
-    align-items: center;
-}
-
-nav a {
-    color: #475569;
-    text-decoration: none;
-    font-size: 15px;
-}
-
-nav a:hover {
-    color: #2563eb;
-}
-
-.btn {
-    background: #2563eb;
-    color: white !important;
-    padding: 12px 20px;
-    border-radius: 9px;
-    text-decoration: none;
-    font-weight: bold;
-    display: inline-block;
-    transition: 0.2s;
-}
-
-.btn:hover {
-    background: #1d4ed8;
-    transform: translateY(-1px);
-}
-
-.hero {
-    background: linear-gradient(135deg, #2563eb, #1e40af);
-    padding: 75px 20px;
-    text-align: center;
-    color: white;
-}
-
-.hero h1 {
-    font-size: 42px;
-    margin-bottom: 18px;
-}
-
-.hero p {
-    font-size: 18px;
-    color: #dbeafe;
-    margin-bottom: 35px;
-}
-
-.search-box {
-    max-width: 900px;
-    margin: auto;
-    background: white;
-    padding: 12px;
-    border-radius: 14px;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.search-box input,
-.search-box select {
-    flex: 1;
-    min-width: 180px;
-    border: 1px solid #e2e8f0;
-    padding: 15px;
-    border-radius: 8px;
-    font-size: 15px;
-    outline: none;
-}
-
-.search-box input:focus,
-.search-box select:focus {
-    border-color: #2563eb;
-}
-
-.search-box button {
-    border: none;
-    cursor: pointer;
-    font-size: 15px;
-    padding: 15px 25px;
-    border-radius: 8px;
-    background: #2563eb;
-    color: white;
-    font-weight: bold;
-}
-
-.search-box button:hover {
-    background: #1d4ed8;
-}
-
-.container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 50px 20px;
-}
-
-.section-title {
-    font-size: 28px;
-    margin-bottom: 12px;
-}
-
-.section-description {
-    color: #64748b;
-    margin-bottom: 30px;
-}
-
-.categories {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 18px;
-}
-
-.category {
-    background: white;
-    border: 1px solid #e5e9f0;
-    padding: 25px;
-    border-radius: 14px;
-    text-decoration: none;
-    color: #202938;
-    transition: 0.2s;
-    cursor: pointer;
-}
-
-.category:hover {
-    border-color: #2563eb;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.08);
-}
-
-.category-icon {
-    font-size: 32px;
-    margin-bottom: 15px;
-}
-
-.category h3 {
-    margin-bottom: 8px;
-    font-size: 18px;
-}
-
-.category p {
-    color: #64748b;
-    font-size: 14px;
-}
-
-.jobs-section {
-    background: white;
-    border-radius: 16px;
-    padding: 35px;
-    margin-top: 45px;
-    border: 1px solid #e5e9f0;
-}
-
-.empty-state {
-    text-align: center;
-    padding: 55px 20px;
-}
-
-.empty-icon {
-    font-size: 55px;
-    margin-bottom: 20px;
-}
-
-.empty-state h3 {
-    font-size: 24px;
-    margin-bottom: 12px;
-}
-
-.empty-state p {
-    color: #64748b;
-    line-height: 1.6;
-    max-width: 550px;
-    margin: 0 auto 25px;
-}
-
-.employer-section {
-    background: #eaf1ff;
-    border-radius: 16px;
-    padding: 40px;
-    margin-top: 45px;
-    text-align: center;
-}
-
-.employer-section h2 {
-    font-size: 28px;
-    margin-bottom: 15px;
-}
-
-.employer-section p {
-    color: #475569;
-    margin-bottom: 25px;
-    line-height: 1.6;
-}
-
-footer {
-    background: #111827;
-    color: white;
-    padding: 40px 7%;
-    margin-top: 50px;
-}
-
-.footer-container {
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 30px;
-}
-
-footer p {
-    color: #9ca3af;
-    margin-top: 12px;
-}
-
-footer a {
-    color: #dbeafe;
-    text-decoration: none;
-}
-
-.footer-links {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-@media (max-width: 700px) {
-    header {
-        padding: 15px 5%;
-    }
-
-    .header-container {
-        flex-direction: column;
-    }
-
-    nav {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .hero {
-        padding: 50px 15px;
-    }
-
-    .hero h1 {
-        font-size: 30px;
-    }
-
-    .hero p {
-        font-size: 16px;
-    }
-
-    .search-box {
-        flex-direction: column;
-    }
-
-    .search-box input,
-    .search-box select {
-        width: 100%;
-    }
-
-    .search-box button {
-        width: 100%;
-    }
-
-    .container {
-        padding: 35px 15px;
-    }
-
-    .jobs-section {
-        padding: 20px;
-    }
-
-    .employer-section {
-        padding: 30px 20px;
-    }
-
-    .footer-container {
-        flex-direction: column;
-    }
-}
+:root{--blue:#2563eb;--blue2:#1e40af;--bg:#f4f7fb;--text:#172033;--muted:#64748b;--border:#e2e8f0;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.container{width:min(1120px,92%);margin:auto}
+header{background:white;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:20}
+.header{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-size:23px;font-weight:800;color:var(--blue)}
+.logo span{color:#111827}
+nav{display:flex;gap:24px;align-items:center}
+nav a{font-size:14px;color:#334155}
+nav a:hover{color:var(--blue)}
+.hero{background:linear-gradient(120deg,#2864e8,#1e40af);color:white;text-align:center;padding:66px 20px 58px}
+.hero h1{font-size:clamp(28px,4vw,42px);margin-bottom:10px}
+.hero p{opacity:.9;margin-bottom:28px}
+.search-panel{max-width:800px;margin:auto;background:white;padding:10px;border-radius:14px;display:grid;grid-template-columns:1.5fr 1fr auto;gap:8px}
+.search-panel input,.search-panel select{width:100%;padding:13px;border:1px solid var(--border);border-radius:9px;color:#334155;background:white}
+.btn{border:0;border-radius:9px;padding:13px 18px;font-weight:700;background:var(--blue);color:white;transition:.15s}
+.btn:hover{filter:brightness(.94);transform:translateY(-1px)}
+.btn-light{background:white;color:var(--blue);border:1px solid var(--border)}
+.btn-dark{background:#172033}
+.section{padding:42px 0}
+.section-title{font-size:26px;margin-bottom:6px}
+.section-sub{color:var(--muted);margin-bottom:22px}
+.categories{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.category{background:white;border:1px solid var(--border);border-radius:14px;padding:20px;min-height:135px;cursor:pointer;transition:.15s}
+.category:hover,.category.active{border-color:var(--blue);box-shadow:0 5px 18px #2563eb15;transform:translateY(-2px)}
+.category .emoji{font-size:28px;display:block;margin-bottom:10px}
+.category h3{font-size:16px;margin-bottom:5px}
+.category p{font-size:13px;color:var(--muted)}
+.jobs-header{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:18px}
+.jobs-tools{display:flex;gap:10px}
+.jobs-tools select{padding:10px;border:1px solid var(--border);border-radius:8px;background:white}
+.job-list{display:grid;gap:12px}
+.job-card{background:white;border:1px solid var(--border);border-radius:13px;padding:20px}
+.job-card h3{margin-bottom:5px}
+.job-meta{color:var(--muted);font-size:14px;display:flex;flex-wrap:wrap;gap:12px;margin:8px 0}
+.job-card .tag{display:inline-block;background:#eff6ff;color:#1d4ed8;padding:4px 9px;border-radius:20px;font-size:12px}
+.empty{background:white;border:1px dashed #cbd5e1;border-radius:14px;text-align:center;padding:38px 20px}
+.empty .emoji{font-size:40px;margin-bottom:10px}
+.empty h3{margin-bottom:7px}
+.empty p{color:var(--muted);max-width:550px;margin:0 auto 18px}
+.employer{background:#eaf1ff;border-radius:18px;padding:34px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.employer h2{margin-bottom:8px}
+.employer p{color:#475569;max-width:650px}
+footer{background:#111827;color:#cbd5e1;padding:28px 0;margin-top:20px}
+.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer .logo{color:#93c5fd}
+footer .logo span{color:white}
+footer small{color:#94a3b8}
+.modal-backdrop{position:fixed;inset:0;background:#0f172a99;display:none;align-items:center;justify-content:center;padding:18px;z-index:50}
+.modal-backdrop.open{display:flex}
+.modal{background:white;border-radius:16px;width:min(600px,100%);max-height:90vh;overflow:auto;padding:24px}
+.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.close{border:0;background:#f1f5f9;border-radius:8px;width:36px;height:36px;font-size:22px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+.field label{font-size:14px;font-weight:700}
+.field input,.field select,.field textarea{border:1px solid var(--border);border-radius:8px;padding:11px;background:white;width:100%}
+.field textarea{min-height:100px;resize:vertical}
+.form-note{font-size:13px;color:var(--muted);margin:14px 0}
+@media(max-width:800px){.categories{grid-template-columns:repeat(2,1fr)}.search-panel{grid-template-columns:1fr}.jobs-header{align-items:start;flex-direction:column}.employer{flex-direction:column;align-items:start}}
+@media(max-width:520px){.header{padding:12px 0;align-items:flex-start;flex-direction:column}nav{gap:14px;flex-wrap:wrap}.hero{padding:45px 14px}.categories{grid-template-columns:1fr 1fr}.category{padding:15px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.employer{padding:24px}}
 </style>
 </head>
-
 <body>
-
 <header>
-    <div class="header-container">
-
-        <a href="#" class="logo">
-            Робота<span>Знайдена</span>
-        </a>
-
-        <nav>
-            <a href="#jobs">Вакансії</a>
-            <a href="#categories">Категорії</a>
-            <a href="#employers">Роботодавцям</a>
-        </nav>
-
-    </div>
+  <div class="container header">
+    <a class="logo" href="#top">Робота<span>Знайдена</span></a>
+    <nav>
+      <a href="#vacancies">Вакансії</a>
+      <a href="#categories">Категорії</a>
+      <a href="#employers">Роботодавцям</a>
+    </nav>
+  </div>
 </header>
 
+<main id="top">
 <section class="hero">
-
-    <h1>Знайди роботу своєї мрії</h1>
-
-    <p>
-        Нові можливості для кар'єри починаються тут
-    </p>
-
-    <div class="search-box">
-
-        <input
-            type="text"
-            id="jobSearch"
-            placeholder="Посада або ключове слово"
-        >
-
-        <select id="citySearch">
-            <option value="">Усі міста</option>
-            <option>Київ</option>
-            <option>Харків</option>
-            <option>Полтава</option>
-            <option>Львів</option>
-            <option>Одеса</option>
-            <option>Дніпро</option>
-            <option>Запоріжжя</option>
-            <option>Черкаси</option>
-            <option>Чернігів</option>
-            <option>Віддалено</option>
-        </select>
-
-        <button onclick="searchJobs()">
-            Знайти роботу
-        </button>
-
-    </div>
-
+  <h1>Знайди роботу своєї мрії</h1>
+  <p>Нові можливості для кар'єри починаються тут</p>
+  <form class="search-panel" id="searchForm">
+    <input id="searchInput" type="search" placeholder="Посада або ключове слово" aria-label="Посада або ключове слово">
+    <select id="cityFilter" aria-label="Місто">
+      <option value="">Усі міста</option>
+      <option>Київ</option><option>Харків</option><option>Одеса</option><option>Дніпро</option><option>Львів</option><option>Полтава</option><option>Віддалено</option>
+    </select>
+    <button class="btn" type="submit">Знайти роботу</button>
+  </form>
 </section>
 
-<main class="container">
+<section class="section container" id="categories">
+  <h2 class="section-title">Популярні категорії</h2>
+  <p class="section-sub">Обери напрямок, у якому хочеш працювати</p>
+  <div class="categories" id="categoryGrid">
+    <button class="category" data-category="IT та технології"><span class="emoji">💻</span><h3>IT та технології</h3><p>Програмування, підтримка, дизайн</p></button>
+    <button class="category" data-category="Продажі"><span class="emoji">📈</span><h3>Продажі</h3><p>Менеджери, консультанти</p></button>
+    <button class="category" data-category="Маркетинг"><span class="emoji">📢</span><h3>Маркетинг</h3><p>Реклама, SMM, просування</p></button>
+    <button class="category" data-category="Логістика"><span class="emoji">🚚</span><h3>Логістика</h3><p>Доставка, склад, транспорт</p></button>
+    <button class="category" data-category="Обслуговування"><span class="emoji">👥</span><h3>Обслуговування</h3><p>Кафе, магазини, клієнти</p></button>
+    <button class="category" data-category="Віддалена робота"><span class="emoji">🏠</span><h3>Віддалена робота</h3><p>Робота з будь-якого місця</p></button>
+  </div>
+</section>
 
-    <section id="categories">
+<section class="section container" id="vacancies">
+  <div class="jobs-header">
+    <div><h2 class="section-title">Актуальні вакансії</h2><p class="section-sub" id="resultText">Перевірені оголошення від роботодавців</p></div>
+    <div class="jobs-tools"><select id="categoryFilter" aria-label="Категорія"><option value="">Усі категорії</option><option>IT та технології</option><option>Продажі</option><option>Маркетинг</option><option>Логістика</option><option>Обслуговування</option><option>Віддалена робота</option></select></div>
+  </div>
+  <div id="jobList" class="job-list"></div>
+</section>
 
-        <h2 class="section-title">
-            Популярні категорії
-        </h2>
-
-        <p class="section-description">
-            Обери напрямок, у якому хочеш працювати
-        </p>
-
-        <div class="categories">
-
-            <div class="category" onclick="selectCategory('IT')">
-                <div class="category-icon">💻</div>
-                <h3>IT та технології</h3>
-                <p>Програмування, підтримка, дизайн</p>
-            </div>
-
-            <div class="category" onclick="selectCategory('Продажі')">
-                <div class="category-icon">📈</div>
-                <h3>Продажі</h3>
-                <p>Менеджери, консультанти</p>
-            </div>
-
-            <div class="category" onclick="selectCategory('Маркетинг')">
-                <div class="category-icon">📢</div>
-                <h3>Маркетинг</h3>
-                <p>Реклама, SMM, просування</p>
-            </div>
-
-            <div class="category" onclick="selectCategory('Логістика')">
-                <div class="category-icon">🚚</div>
-                <h3>Логістика</h3>
-                <p>Доставка, склад, транспорт</p>
-            </div>
-
-            <div class="category" onclick="selectCategory('Обслуговування')">
-                <div class="category-icon">👥</div>
-                <h3>Обслуговування</h3>
-                <p>Кафе, магазини, клієнти</p>
-            </div>
-
-            <div class="category" onclick="selectCategory('Віддалена робота')">
-                <div class="category-icon">🏠</div>
-                <h3>Віддалена робота</h3>
-                <p>Робота з будь-якого місця</p>
-            </div>
-
-        </div>
-
-    </section>
-
-    <section id="jobs" class="jobs-section">
-
-        <h2 class="section-title">
-            Актуальні вакансії
-        </h2>
-
-        <p class="section-description">
-            Переглядай нові можливості та знаходь роботу
-        </p>
-
-        <div class="empty-state">
-
-            <div class="empty-icon">🔎</div>
-
-            <h3 id="emptyTitle">
-                Вакансій поки немає
-            </h3>
-
-            <p id="emptyDescription">
-                Ми працюємо над наповненням сайту реальними пропозиціями.
-                Зовсім скоро тут з'являться актуальні вакансії від роботодавців.
-            </p>
-
-            <a href="#employers" class="btn">
-                Розмістити вакансію
-            </a>
-
-        </div>
-
-    </section>
-
-    <section id="employers" class="employer-section">
-
-        <h2>Ви шукаєте працівників?</h2>
-
-        <p>
-            Розмістіть вакансію на РоботаЗнайдена та знайдіть
-            працівника для своєї компанії.
-        </p>
-
-        <a
-            class="btn"
-            href="mailto:YOUR_EMAIL@gmail.com?subject=Розміщення вакансії на РоботаЗнайдена"
-        >
-            Розмістити вакансію
-        </a>
-
-    </section>
-
+<section class="section container" id="employers">
+  <div class="employer">
+    <div><h2>Ви роботодавець?</h2><p>Надішліть інформацію про вакансію. Ми перевіримо оголошення перед розміщенням на сайті.</p></div>
+    <button class="btn" id="openModal">Розмістити вакансію</button>
+  </div>
+</section>
 </main>
 
-<footer>
+<footer><div class="container footer-inner"><a class="logo" href="#top">Робота<span>Знайдена</span></a><small>© 2026 РоботаЗнайдена. Платформа пошуку роботи в Україні.</small></div></footer>
 
-    <div class="footer-container">
-
-        <div>
-            <a href="#" class="logo" style="color:white;">
-                РоботаЗнайдена
-            </a>
-
-            <p>
-                Платформа для пошуку роботи в Україні.
-            </p>
-        </div>
-
-        <div class="footer-links">
-            <a href="#jobs">Вакансії</a>
-            <a href="#categories">Категорії</a>
-            <a href="#employers">Роботодавцям</a>
-        </div>
-
-    </div>
-
-</footer>
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-head"><h2 id="modalTitle">Заявка на розміщення вакансії</h2><button class="close" id="closeModal" aria-label="Закрити">×</button></div>
+    <form id="employerForm">
+      <div class="form-grid">
+        <div class="field"><label for="company">Назва компанії *</label><input id="company" required></div>
+        <div class="field"><label for="contactName">Контактна особа *</label><input id="contactName" required></div>
+        <div class="field"><label for="contactEmail">Ваш email *</label><input id="contactEmail" type="email" required></div>
+        <div class="field"><label for="contactPhone">Телефон</label><input id="contactPhone" type="tel"></div>
+        <div class="field"><label for="vacancyTitle">Назва вакансії *</label><input id="vacancyTitle" required></div>
+        <div class="field"><label for="vacancyCity">Місто / формат *</label><input id="vacancyCity" placeholder="Місто або віддалено" required></div>
+        <div class="field"><label for="vacancyCategory">Категорія *</label><select id="vacancyCategory" required><option value="">Оберіть категорію</option><option>IT та технології</option><option>Продажі</option><option>Маркетинг</option><option>Логістика</option><option>Обслуговування</option><option>Віддалена робота</option><option>Інше</option></select></div>
+        <div class="field"><label for="salary">Зарплата</label><input id="salary" placeholder="Наприклад, 20 000 грн"></div>
+        <div class="field full"><label for="description">Опис вакансії та вимоги *</label><textarea id="description" required placeholder="Обов'язки, вимоги, графік, умови..."></textarea></div>
+      </div>
+      <p class="form-note">Після натискання кнопки відкриється ваша пошта з готовим листом. Вакансія не публікується автоматично — її потрібно перевірити.</p>
+      <button class="btn" type="submit">Надіслати заявку</button>
+    </form>
+  </div>
+</div>
 
 <script>
+// Додайте свою адресу електронної пошти для отримання заявок роботодавців:
+const CONTACT_EMAIL = "YOUR_EMAIL@gmail.com";
 
-function searchJobs() {
+// Сюди додаються лише реальні, перевірені вакансії.
+// Поки масив порожній — вигаданих оголошень на сайті немає.
+const vacancies = [];
 
-    const job = document.getElementById("jobSearch").value;
-    const city = document.getElementById("citySearch").value;
+const searchInput=document.getElementById('searchInput');
+const cityFilter=document.getElementById('cityFilter');
+const categoryFilter=document.getElementById('categoryFilter');
+const jobList=document.getElementById('jobList');
+const resultText=document.getElementById('resultText');
 
-    const title = document.getElementById("emptyTitle");
-    const description = document.getElementById("emptyDescription");
-
-    if (job || city) {
-
-        title.textContent = "Вакансій за вашим запитом поки немає";
-
-        description.textContent =
-            "Ми ще не додали вакансії за цим запитом. " +
-            "Спробуйте змінити ключові слова або місто.";
-
-    } else {
-
-        title.textContent = "Вакансій поки немає";
-
-        description.textContent =
-            "Ми працюємо над наповненням сайту реальними пропозиціями. " +
-            "Зовсім скоро тут з'являться актуальні вакансії від роботодавців.";
-
-    }
-
-    document.getElementById("jobs").scrollIntoView({
-        behavior: "smooth"
-    });
-
+function renderJobs(){
+  const query=searchInput.value.trim().toLowerCase();
+  const city=cityFilter.value.toLowerCase();
+  const category=categoryFilter.value;
+  const filtered=vacancies.filter(job=>{
+    const text=[job.title,job.company,job.city,job.category,job.description].join(' ').toLowerCase();
+    return (!query||text.includes(query))&&(!city||job.city.toLowerCase().includes(city))&&(!category||job.category===category);
+  });
+  resultText.textContent=`Знайдено вакансій: ${filtered.length}`;
+  if(!filtered.length){
+    jobList.innerHTML=`<div class="empty"><div class="emoji">🔎</div><h3>Поки що вакансій немає</h3><p>${query||city||category?'За вашим запитом оголошень не знайдено. Спробуйте змінити параметри пошуку.':'Ми працюємо над наповненням сайту реальними вакансіями. Роботодавці можуть надіслати заявку на розміщення.'}</p><button class="btn btn-light" onclick="document.getElementById('employers').scrollIntoView({behavior:'smooth'})">Роботодавцям</button></div>`;
+    return;
+  }
+  jobList.innerHTML=filtered.map(job=>`<article class="job-card"><h3>${escapeHTML(job.title)}</h3><strong>${escapeHTML(job.company)}</strong><div class="job-meta"><span>📍 ${escapeHTML(job.city)}</span><span>💰 ${escapeHTML(job.salary||'Зарплата не вказана')}</span></div><span class="tag">${escapeHTML(job.category)}</span><p>${escapeHTML(job.description)}</p></article>`).join('');
 }
-
-function selectCategory(category) {
-
-    document.getElementById("jobSearch").value = category;
-
-    searchJobs();
-
-}
-
+function escapeHTML(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+document.getElementById('searchForm').addEventListener('submit',e=>{e.preventDefault();renderJobs();document.getElementById('vacancies').scrollIntoView({behavior:'smooth'});});
+searchInput.addEventListener('input',renderJobs);
+cityFilter.addEventListener('change',renderJobs);
+categoryFilter.addEventListener('change',renderJobs);
+document.querySelectorAll('.category').forEach(btn=>btn.addEventListener('click',()=>{
+  document.querySelectorAll('.category').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');categoryFilter.value=btn.dataset.category;renderJobs();document.getElementById('vacancies').scrollIntoView({behavior:'smooth'});
+}));
+const backdrop=document.getElementById('modalBackdrop');
+document.getElementById('openModal').addEventListener('click',()=>backdrop.classList.add('open'));
+document.getElementById('closeModal').addEventListener('click',()=>backdrop.classList.remove('open'));
+backdrop.addEventListener('click',e=>{if(e.target===backdrop)backdrop.classList.remove('open');});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')backdrop.classList.remove('open');});
+document.getElementById('employerForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  if(CONTACT_EMAIL==="YOUR_EMAIL@gmail.com"){alert("Спочатку в коді сайту замініть YOUR_EMAIL@gmail.com на свою електронну адресу.");return;}
+  const fields={
+    company:document.getElementById('company').value,
+    contactName:document.getElementById('contactName').value,
+    contactEmail:document.getElementById('contactEmail').value,
+    contactPhone:document.getElementById('contactPhone').value,
+    title:document.getElementById('vacancyTitle').value,
+    city:document.getElementById('vacancyCity').value,
+    category:document.getElementById('vacancyCategory').value,
+    salary:document.getElementById('salary').value,
+    description:document.getElementById('description').value
+  };
+  const subject=encodeURIComponent('Заявка на вакансію — '+fields.title);
+  const body=encodeURIComponent(`Компанія: ${fields.company}\nКонтактна особа: ${fields.contactName}\nEmail: ${fields.contactEmail}\nТелефон: ${fields.contactPhone}\nВакансія: ${fields.title}\nМісто/формат: ${fields.city}\nКатегорія: ${fields.category}\nЗарплата: ${fields.salary}\n\nОпис:\n${fields.description}`);
+  window.location.href=`mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+});
+renderJobs();
 </script>
-
 </body>
 </html>
