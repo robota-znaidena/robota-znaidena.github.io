@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://robota-znaidena.github.io/sitemap.xml
