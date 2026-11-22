@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -6,47 +7,44 @@
 <title>РоботаЗнайдена — пошук роботи в Україні</title>
 <meta name="description" content="РоботаЗнайдена — платформа для пошуку роботи та розміщення вакансій в Україні.">
 <style>
-:root{--blue:#2563eb;--blue2:#1e40af;--bg:#f4f7fb;--text:#172033;--muted:#64748b;--border:#e2e8f0;--white:#fff}
+:root{--blue:#2563eb;--bg:#f4f7fb;--text:#172033;--muted:#64748b;--border:#e2e8f0}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
 a{color:inherit;text-decoration:none}
-button,input,select,textarea{font:inherit}
+button,input,select{font:inherit}
 button{cursor:pointer}
 .container{width:min(1120px,92%);margin:auto}
 header{background:white;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:20}
 .header{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px}
 .logo{font-size:23px;font-weight:800;color:var(--blue)}
 .logo span{color:#111827}
-nav{display:flex;gap:24px;align-items:center}
+nav{display:flex;gap:24px}
 nav a{font-size:14px;color:#334155}
-nav a:hover{color:var(--blue)}
 .hero{background:linear-gradient(120deg,#2864e8,#1e40af);color:white;text-align:center;padding:66px 20px 58px}
 .hero h1{font-size:clamp(28px,4vw,42px);margin-bottom:10px}
 .hero p{opacity:.9;margin-bottom:28px}
 .search-panel{max-width:800px;margin:auto;background:white;padding:10px;border-radius:14px;display:grid;grid-template-columns:1.5fr 1fr auto;gap:8px}
 .search-panel input,.search-panel select{width:100%;padding:13px;border:1px solid var(--border);border-radius:9px;color:#334155;background:white}
-.btn{border:0;border-radius:9px;padding:13px 18px;font-weight:700;background:var(--blue);color:white;transition:.15s}
-.btn:hover{filter:brightness(.94);transform:translateY(-1px)}
+.btn{border:0;border-radius:9px;padding:13px 18px;font-weight:700;background:var(--blue);color:white}
 .btn-light{background:white;color:var(--blue);border:1px solid var(--border)}
-.btn-dark{background:#172033}
 .section{padding:42px 0}
 .section-title{font-size:26px;margin-bottom:6px}
 .section-sub{color:var(--muted);margin-bottom:22px}
-.categories{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
-.category{background:white;border:1px solid var(--border);border-radius:14px;padding:20px;min-height:135px;cursor:pointer;transition:.15s}
-.category:hover,.category.active{border-color:var(--blue);box-shadow:0 5px 18px #2563eb15;transform:translateY(-2px)}
+.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.category{background:white;border:1px solid var(--border);border-radius:14px;padding:20px;min-height:135px;text-align:left}
+.category:hover,.category.active{border-color:var(--blue);box-shadow:0 5px 18px #2563eb15}
 .category .emoji{font-size:28px;display:block;margin-bottom:10px}
 .category h3{font-size:16px;margin-bottom:5px}
 .category p{font-size:13px;color:var(--muted)}
 .jobs-header{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:18px}
-.jobs-tools{display:flex;gap:10px}
 .jobs-tools select{padding:10px;border:1px solid var(--border);border-radius:8px;background:white}
 .job-list{display:grid;gap:12px}
 .job-card{background:white;border:1px solid var(--border);border-radius:13px;padding:20px}
 .job-card h3{margin-bottom:5px}
 .job-meta{color:var(--muted);font-size:14px;display:flex;flex-wrap:wrap;gap:12px;margin:8px 0}
-.job-card .tag{display:inline-block;background:#eff6ff;color:#1d4ed8;padding:4px 9px;border-radius:20px;font-size:12px}
+.tag{display:inline-block;background:#eff6ff;color:#1d4ed8;padding:4px 9px;border-radius:20px;font-size:12px;margin-bottom:10px}
+.job-description{white-space:pre-line;margin-top:10px}
 .empty{background:white;border:1px dashed #cbd5e1;border-radius:14px;text-align:center;padding:38px 20px}
 .empty .emoji{font-size:40px;margin-bottom:10px}
 .empty h3{margin-bottom:7px}
@@ -60,102 +58,165 @@ footer .logo{color:#93c5fd}
 footer .logo span{color:white}
 footer small{color:#94a3b8}
 @media(max-width:800px){.categories{grid-template-columns:repeat(2,1fr)}.search-panel{grid-template-columns:1fr}.jobs-header{align-items:start;flex-direction:column}.employer{flex-direction:column;align-items:start}}
-@media(max-width:520px){.header{padding:12px 0;align-items:flex-start;flex-direction:column}nav{gap:14px;flex-wrap:wrap}.hero{padding:45px 14px}.categories{grid-template-columns:1fr 1fr}.category{padding:15px}.employer{padding:24px}}
+@media(max-width:520px){.header{padding:12px 0;align-items:flex-start;flex-direction:column}nav{gap:14px;flex-wrap:wrap}.hero{padding:45px 14px}.category{padding:15px}.employer{padding:24px}}
 </style>
 </head>
 <body>
 <header>
-  <div class="container header">
-    <a class="logo" href="#top">Робота<span>Знайдена</span></a>
-    <nav>
-      <a href="#vacancies">Вакансії</a>
-      <a href="#categories">Категорії</a>
-      <a href="#employers">Роботодавцям</a>
-    </nav>
-  </div>
+<div class="container header">
+<a class="logo" href="#top">Робота<span>Знайдена</span></a>
+<nav><a href="#vacancies">Вакансії</a><a href="#categories">Категорії</a><a href="#employers">Роботодавцям</a></nav>
+</div>
 </header>
 
 <main id="top">
 <section class="hero">
-  <h1>Знайди роботу своєї мрії</h1>
-  <p>Нові можливості для кар'єри починаються тут</p>
-  <form class="search-panel" id="searchForm">
-    <input id="searchInput" type="search" placeholder="Посада або ключове слово" aria-label="Посада або ключове слово">
-    <select id="cityFilter" aria-label="Місто">
-      <option value="">Усі міста</option>
-      <option>Київ</option><option>Харків</option><option>Одеса</option><option>Дніпро</option><option>Львів</option><option>Полтава</option><option>Віддалено</option>
-    </select>
-    <button class="btn" type="submit">Знайти роботу</button>
-  </form>
+<h1>Знайди роботу своєї мрії</h1>
+<p>Нові можливості для кар'єри починаються тут</p>
+<form class="search-panel" id="searchForm">
+<input id="searchInput" type="search" placeholder="Посада або ключове слово" aria-label="Посада або ключове слово">
+<select id="cityFilter" aria-label="Місто">
+<option value="">Усі міста</option>
+<option>Київ</option><option>Харків</option><option>Одеса</option><option>Дніпро</option><option>Львів</option><option>Полтава</option><option>Віддалено</option>
+</select>
+<button class="btn" type="submit">Знайти роботу</button>
+</form>
 </section>
 
 <section class="section container" id="categories">
-  <h2 class="section-title">Популярні категорії</h2>
-  <p class="section-sub">Обери напрямок, у якому хочеш працювати</p>
-  <div class="categories" id="categoryGrid">
-    <button class="category" data-category="IT та технології"><span class="emoji">💻</span><h3>IT та технології</h3><p>Програмування, підтримка, дизайн</p></button>
-    <button class="category" data-category="Продажі"><span class="emoji">📈</span><h3>Продажі</h3><p>Менеджери, консультанти</p></button>
-    <button class="category" data-category="Маркетинг"><span class="emoji">📢</span><h3>Маркетинг</h3><p>Реклама, SMM, просування</p></button>
-    <button class="category" data-category="Логістика"><span class="emoji">🚚</span><h3>Логістика</h3><p>Доставка, склад, транспорт</p></button>
-    <button class="category" data-category="Обслуговування"><span class="emoji">👥</span><h3>Обслуговування</h3><p>Кафе, магазини, клієнти</p></button>
-    <button class="category" data-category="Віддалена робота"><span class="emoji">🏠</span><h3>Віддалена робота</h3><p>Робота з будь-якого місця</p></button>
-  </div>
+<h2 class="section-title">Популярні категорії</h2>
+<p class="section-sub">Обери напрямок, у якому хочеш працювати</p>
+<div class="categories" id="categoryGrid">
+<button class="category" data-category="IT та технології"><span class="emoji">💻</span><h3>IT та технології</h3><p>Програмування, підтримка, дизайн</p></button>
+<button class="category" data-category="Продажі"><span class="emoji">📈</span><h3>Продажі</h3><p>Менеджери, консультанти</p></button>
+<button class="category" data-category="Маркетинг"><span class="emoji">📢</span><h3>Маркетинг</h3><p>Реклама, SMM, просування</p></button>
+<button class="category" data-category="Логістика"><span class="emoji">🚚</span><h3>Логістика</h3><p>Доставка, склад, транспорт</p></button>
+<button class="category" data-category="Обслуговування"><span class="emoji">👥</span><h3>Обслуговування</h3><p>Кафе, магазини, клієнти</p></button>
+<button class="category" data-category="Віддалена робота"><span class="emoji">🏠</span><h3>Віддалена робота</h3><p>Робота з будь-якого місця</p></button>
+</div>
 </section>
 
 <section class="section container" id="vacancies">
-  <div class="jobs-header">
-    <div><h2 class="section-title">Актуальні вакансії</h2><p class="section-sub" id="resultText">Перевірені оголошення від роботодавців</p></div>
-    <div class="jobs-tools"><select id="categoryFilter" aria-label="Категорія"><option value="">Усі категорії</option><option>IT та технології</option><option>Продажі</option><option>Маркетинг</option><option>Логістика</option><option>Обслуговування</option><option>Віддалена робота</option></select></div>
-  </div>
-  <div id="jobList" class="job-list"></div>
+<div class="jobs-header">
+<div><h2 class="section-title">Актуальні вакансії</h2><p class="section-sub" id="resultText">Завантаження вакансій...</p></div>
+<div class="jobs-tools"><select id="categoryFilter" aria-label="Категорія">
+<option value="">Усі категорії</option>
+<option>IT та технології</option><option>Продажі</option><option>Маркетинг</option><option>Логістика</option><option>Обслуговування</option><option>Віддалена робота</option>
+</select></div>
+</div>
+<div id="jobList" class="job-list"></div>
 </section>
 
 <section class="section container" id="employers">
-  <div class="employer">
-    <div><h2>Ви роботодавець?</h2><p>Надішліть інформацію про вакансію. Ми перевіримо оголошення перед розміщенням на сайті.</p></div>
-    <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScxBy_ZIMorVQiE6k7CGpj4yT_j7s7LY4XUB5iFZnq_Gsd5bA/viewform" target="_blank" rel="noopener noreferrer">Розмістити вакансію</a>
-  </div>
+<div class="employer">
+<div><h2>Ви роботодавець?</h2><p>Надішліть інформацію про вакансію. Ми перевіримо оголошення перед розміщенням на сайті.</p></div>
+<a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScxBy_ZIMorVQiE6k7CGpj4yT_j7s7LY4XUB5iFZnq_Gsd5bA/viewform" target="_blank" rel="noopener noreferrer">Розмістити вакансію</a>
+</div>
 </section>
 </main>
 
 <footer><div class="container footer-inner"><a class="logo" href="#top">Робота<span>Знайдена</span></a><small>© 2026 РоботаЗнайдена. Платформа пошуку роботи в Україні.</small></div></footer>
 
-
 <script>
-// На сайті поки немає опублікованих вакансій. Додаються лише реальні та перевірені оголошення.
-const vacancies = [];
+const VACANCIES_URL = "https://robota-znaidena.github.io/vacancies.json";
+let vacancies = [];
 
-const searchInput=document.getElementById('searchInput');
-const cityFilter=document.getElementById('cityFilter');
-const categoryFilter=document.getElementById('categoryFilter');
-const jobList=document.getElementById('jobList');
-const resultText=document.getElementById('resultText');
+const searchInput = document.getElementById("searchInput");
+const cityFilter = document.getElementById("cityFilter");
+const categoryFilter = document.getElementById("categoryFilter");
+const jobList = document.getElementById("jobList");
+const resultText = document.getElementById("resultText");
 
-function renderJobs(){
-  const query=searchInput.value.trim().toLowerCase();
-  const city=cityFilter.value.toLowerCase();
-  const category=categoryFilter.value;
-  const filtered=vacancies.filter(job=>{
-    const text=[job.title,job.company,job.city,job.category,job.description].join(' ').toLowerCase();
-    return (!query||text.includes(query))&&(!city||job.city.toLowerCase().includes(city))&&(!category||job.category===category);
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+  })[char]);
+}
+
+function renderJobs() {
+  const query = searchInput.value.trim().toLowerCase();
+  const city = cityFilter.value.trim().toLowerCase();
+  const category = categoryFilter.value;
+
+  const filtered = vacancies.filter(job => {
+    const text = [job.title, job.company, job.city, job.category, job.description]
+      .join(" ").toLowerCase();
+
+    return (!query || text.includes(query)) &&
+      (!city || String(job.city || "").toLowerCase().includes(city)) &&
+      (!category || job.category === category);
   });
-  resultText.textContent=`Знайдено вакансій: ${filtered.length}`;
-  if(!filtered.length){
-    jobList.innerHTML=`<div class="empty"><div class="emoji">🔎</div><h3>Поки що вакансій немає</h3><p>${query||city||category?'За вашим запитом оголошень не знайдено. Спробуйте змінити параметри пошуку.':'Ми працюємо над наповненням сайту реальними вакансіями. Роботодавці можуть надіслати заявку на розміщення.'}</p><a class="btn btn-light" href="#employers">Роботодавцям</a></div>`;
+
+  resultText.textContent = `Знайдено вакансій: ${filtered.length}`;
+
+  if (!filtered.length) {
+    jobList.innerHTML = `<div class="empty">
+      <div class="emoji">🔎</div>
+      <h3>Поки що вакансій немає</h3>
+      <p>${query || city || category
+        ? "За вашим запитом оголошень не знайдено. Спробуйте змінити параметри пошуку."
+        : "Ми працюємо над наповненням сайту реальними вакансіями. Роботодавці можуть надіслати заявку на розміщення."}</p>
+      <a class="btn btn-light" href="#employers">Роботодавцям</a>
+    </div>`;
     return;
   }
-  jobList.innerHTML=filtered.map(job=>`<article class="job-card"><h3>${escapeHTML(job.title)}</h3><strong>${escapeHTML(job.company)}</strong><div class="job-meta"><span>📍 ${escapeHTML(job.city)}</span><span>💰 ${escapeHTML(job.salary||'Зарплата не вказана')}</span></div><span class="tag">${escapeHTML(job.category)}</span><p>${escapeHTML(job.description)}</p></article>`).join('');
+
+  jobList.innerHTML = filtered.map(job => `
+    <article class="job-card">
+      <h3>${escapeHTML(job.title)}</h3>
+      <strong>${escapeHTML(job.company)}</strong>
+      <div class="job-meta">
+        <span>📍 ${escapeHTML(job.city || "Місто не вказано")}</span>
+        <span>💰 ${escapeHTML(job.salary || "Зарплата не вказана")}</span>
+      </div>
+      <span class="tag">${escapeHTML(job.category || "Інше")}</span>
+      <p class="job-description">${escapeHTML(job.description || "")}</p>
+    </article>
+  `).join("");
 }
-function escapeHTML(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-document.getElementById('searchForm').addEventListener('submit',e=>{e.preventDefault();renderJobs();document.getElementById('vacancies').scrollIntoView({behavior:'smooth'});});
-searchInput.addEventListener('input',renderJobs);
-cityFilter.addEventListener('change',renderJobs);
-categoryFilter.addEventListener('change',renderJobs);
-document.querySelectorAll('.category').forEach(btn=>btn.addEventListener('click',()=>{
-  document.querySelectorAll('.category').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');categoryFilter.value=btn.dataset.category;renderJobs();document.getElementById('vacancies').scrollIntoView({behavior:'smooth'});
-}));
-renderJobs();
+
+async function loadVacancies() {
+  resultText.textContent = "Завантаження вакансій...";
+  try {
+    const response = await fetch(VACANCIES_URL + "?v=" + Date.now(), {cache:"no-store"});
+    if (!response.ok) throw new Error("Не вдалося завантажити вакансії");
+    const data = await response.json();
+    if (!Array.isArray(data)) throw new Error("Неправильний формат файлу вакансій");
+    vacancies = data.filter(job => job && job.title && job.company);
+    renderJobs();
+  } catch (error) {
+    console.error(error);
+    resultText.textContent = "Не вдалося завантажити вакансії";
+    jobList.innerHTML = `<div class="empty">
+      <div class="emoji">⚠️</div>
+      <h3>Помилка завантаження</h3>
+      <p>Спробуйте оновити сторінку трохи пізніше.</p>
+      <button class="btn btn-light" onclick="loadVacancies()">Спробувати ще раз</button>
+    </div>`;
+  }
+}
+
+document.getElementById("searchForm").addEventListener("submit", event => {
+  event.preventDefault();
+  renderJobs();
+  document.getElementById("vacancies").scrollIntoView({behavior:"smooth"});
+});
+
+searchInput.addEventListener("input", renderJobs);
+cityFilter.addEventListener("change", renderJobs);
+categoryFilter.addEventListener("change", renderJobs);
+
+document.querySelectorAll(".category").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".category").forEach(item => item.classList.remove("active"));
+    button.classList.add("active");
+    categoryFilter.value = button.dataset.category;
+    renderJobs();
+    document.getElementById("vacancies").scrollIntoView({behavior:"smooth"});
+  });
+});
+
+loadVacancies();
 </script>
 </body>
 </html>
